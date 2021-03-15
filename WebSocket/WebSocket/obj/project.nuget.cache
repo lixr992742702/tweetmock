@@ -1,0 +1,56 @@
+{
+  "version": 2,
+  "dgSpecHash": "IoH7ow77wZlU894l8tTClCVVmmZjJxGxjJaJwAbTPApRIR/2tmTE96JuiTgBhKlnC8Y0kWwQI0h3Klq2sVZTMg==",
+  "success": true,
+  "projectFilePath": "E:\\Study\\2020fall_COP5615\\Project\\test3\\WebSocket\\WebSocket\\WebSocket.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arnol\\.nuget\\packages\\argu\\3.2.0\\argu.3.2.0.nupkg.sha512",
+    "C:\\Users\\arnol\\.nuget\\packages\\expecto\\4.0.3\\expecto.4.0.3.nupkg.sha512",
+    "C:\\Users\\arnol\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512",
+    "C:\\Users\\arnol\\.nuget\\packages\\mono.cecil\\0.9.6.4\\mono.cecil.0.9.6.4.nupkg.sha512",
+    "C:\\Users\\arnol\\.nuget\\packages\\suave\\2.6.0\\suave.2.6.0.nupkg.sha512",
+    "C:\\Users\\arnol\\.nuget\\packages\\suave.testing\\2.2.1\\suave.testing.2.2.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Argu 3.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Argu",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Expecto 4.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Expecto",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Mono.Cecil 0.9.6.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Mono.Cecil",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Suave.Testing 2.2.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Suave.Testing",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

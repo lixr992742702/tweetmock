@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Kodinger">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Interface</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/my-login.css">
+</head>
+
+<style>
+  h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 60px;
+    text-align: center;
+    
+  }
+
+  ul {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 30px;
+  }
+
+  ul > li + li {
+    border-top: 1px dotted lightgray;
+  }
+
+  label {
+    width: 100%;
+    font-weight: bold !important;
+  }
+
+  body {
+    padding: 30px;
+  }
+  
+</style>
+
+<h1>Twitter clone</h1>
+
+
+<body >
+<script language="javascript" type="text/javascript">
+
+    var wsUrl = "ws://localhost:8080/websocket";
+    var output;
+    var selfname = "";
+    var connect = false
+
+    function init()
+    {
+        output = document.getElementById("output");
+        testWebSocket();
+    }
+
+    function testWebSocket()
+    {
+        websocket = new WebSocket(wsUrl);
+        websocket.onopen = function(evt) { onOpen(evt) };
+        websocket.onclose = function(evt) { onClose(evt) };
+        websocket.onmessage = function(evt) { onMessage(evt) }; //this one can achieve live tweet
+        websocket.onerror = function(evt) { onError(evt) };
+    }
+
+    function onOpen(evt)
+    {
+        writeToScreen("CONNECTED");
+        //doSend("3rdWebSocket rocks");
+    }
+
+    function onClose(evt)
+    {
+        writeToScreen("DISCONNECTED");
+    }
+
+    function onMessage(evt)
+    {
+        writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+        //websocket.close();
+    }
+
+    function onError(evt)
+    {
+        writeToScreen('<span style="color: #ff0000;">ERROR:</span> ' + evt.data);
+    }
+
+    function doSend(message)
+    {
+        writeToScreen("SENT: " + message);
+        websocket.send(message);
+    }
+    function doRefresh(message)
+    {
+        websocket.send(message);
+    }
+    function writeToScreen(message)
+    {
+        var pre = document.createElement("p");
+        pre.style.wordWrap = "break-word";
+        pre.innerHTML = message;
+        output.appendChild(pre);
+    }
+
+    function send_MSG(commond)
+    {
+        var mymsg = document.getElementById("message_box").value;
+        doSend(commond+":"+mymsg)
+    }
+    // 1. Register
+    function Register()
+    {
+        var msg = document.getElementById("message_box").value;
+        doSend("Register:" + msg);
+    }
+    // 2. Login
+    function Login()
+    {
+        var msg = document.getElementById("message_box").value;
+        doSend("Login:" + msg);
+        selfname = msg.split("*", 1) //question?
+        connect = true
+        //onmessage on
+    }
+    // 3. Logout
+    function Logout()
+    {
+        doSend("Logout");
+        selfname = "";
+        connect = false
+    }
+    // 4. Subscribe
+    function Subscribe()
+    {   
+        if (selfname == "")
+        {
+            writeToScreen("Not connect! Please login first!");
+        }
+        else
+        {
+            var msg = document.getElementById("message_box").value;
+            doSend("Subscribe:" + selfname + "*" + msg);
+        }           
+    }
+
+    // 5. Tweet
+    function Tweet()
+    {
+        if (selfname == "")
+        {
+            writeToScreen("Not connect! Please login first!");
+        }
+        else {
+            var msg = document.getElementById("message_box").value;
+            doSend("Tweet:" + selfname + "*" + msg)
+        }
+    }
+    // 6. Retweet
+    function Retweet()
+    {
+        if (selfname == "")
+        {
+            writeToScreen("Not connect! Please login first!");
+        }
+        else
+        {
+            var msg = document.getElementById("message_box").value;
+            doSend("Retweet:" + selfname + "*" + msg)
+        }
+    }
+    // 7. Search by hashtag
+    function HashtagSearch()
+    {
+        if (selfname == "")
+        {
+            writeToScreen("Not connect! Please login first!");
+        }
+        else
+        {
+            var msg = document.getElementById("message_box").value;
+            doSend("HashtagSearch:" + selfname + "*" + msg)
+        }
+    }
+    // 8. Search subscribed tweets
+    function SubscribedTweets()
+    {
+        if (selfname == "")
+        {
+            writeToScreen("Not connect! Please login first!");
+        }
+        else
+        {
+            doSend("SubscribedTweets:" + selfname)
+        }
+    }
+    // 9. Search My mention
+    function MyMention()
+    {
+        if (selfname == "")
+        {
+            writeToScreen("Not connect! Please login first!");
+        }
+        else
+        {
+            doSend("MyMention:" + selfname)
+        }
+    }
+    // 10. Refresh
+    function Refresh()
+    {
+        if (selfname != "")
+        {
+            doRefresh("Refresh:" + selfname)
+        }
+    }
+    window.addEventListener("load", init, false);
+    window.setInterval(Refresh, 1000);
+
+</script>
+<body>
+    <label style="font-size:30px; text-align: left">Input textbox</label>
+    <input id="message_box" type="text" value="PLEASE ENTER" style="width: 80%; text-align: left; vertical-align:middle;" />
+
+    <label style="height: 20px"></label>
+    <div>
+        <input type="button" style="background: bisque; " id="register_button" value="register" onclick="Register()">
+        <input type="button" style="background: bisque; " id="login_button" value="login" onclick="Login()">
+        <input type="button" style="background: bisque" id="logout_button" value="logout" onclick="Logout()">
+        <input type="button" style="background: bisque" id="subscribe_button" value="subscribe" onclick="Subscribe()">
+        <input type="button" style="background: bisque" id="tweet_button" value="tweet" onclick="Tweet()">
+        <input type="button" style="background: bisque" id="retweet_button" value="retweet" onclick="Retweet()">
+        <input type="button" style="background: bisque" id="searchbyhashtag_button" value="HashtagSearch" onclick="HashtagSearch()">
+        <input type="button" style="background: bisque" id="searchbysubscribed_button" value="SubscribedTweets" onclick="SubscribedTweets()">
+        <input type="button" style="background: bisque" id="searchbymention_button" value="Mymention" onclick="MyMention()">
+
+    </div>
+    <label style="height: 10px"></label>
+    <label style="font-size:30px; text-align: left">output textbox</label>
+    <div id="output" style="font-size:12px"></div>
+</body>
