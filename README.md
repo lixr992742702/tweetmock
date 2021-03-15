@@ -14,23 +14,23 @@
 - Open and run /project4_2/WebSocket.sln to activate server
 - Run Twitter Clone.html to open UIs.
 - How to use:
-	**Register** 	
+	## Register 	
 	Input username and password connected with "*", for example: enter "user1*1111", then click Register button. If succeed, return "Register succeed".
-	**Login**  		
+	## Login  		
 	Similar with Register, input username and password connected with "*", then click Login button. If succeed, return "Login succeed, username, password".
-	**Logout**  	
+	## Logout  	
 	Click logout button to disconnect account. If succeed, return "Logout succeed".
-	**Subscribe**  	
+	## Subscribe  	
 	Input username you want to follow and click Subscribe button.If succeed, reutrn "Subscribe succeed, follow tweet from username".
-	**Tweet**  		
+	## Tweet  		
 	Input tweet as "content#hashtag@username", for example: enter "I love cats!#cats@user2", click Tweet button to tweet. If succeed, return "Tweet Succeed!" and tweet content, hashtag and mention.
-	**Retweet**  	
+	## Retweet  	
 	When you receive a live tweet, the tweet id will be shown on screen. If you want to retweet, enter this tweet id and click retweet button. If succeed, return "Retweet:" with tweet content, hashtag and mention. 
-	**Query hashtag** 
+	## Query hashtag 
 	Input a hashtag, then click HashtagSearch button to get all tweets with this hashtag.
-	**Query subscribed** 
+	## Query subscribed 
 	Click SubscribedTweets button to get all tweets you subscribed.
-	**Query Mention** 
+	## Query Mention 
 	Click Mymention button to get all tweets mention you.
 
 
